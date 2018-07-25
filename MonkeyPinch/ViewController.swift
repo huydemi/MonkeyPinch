@@ -38,11 +38,17 @@ class ViewController: UIViewController {
   }
   
   @IBAction func handlePinch(recognizer : UIPinchGestureRecognizer) {
-    
+    if let view = recognizer.view {
+      view.transform = view.transform.scaledBy(x: recognizer.scale, y: recognizer.scale)
+      recognizer.scale = 1
+    }
   }
   
   @IBAction func handleRotate(recognizer : UIRotationGestureRecognizer) {
-    
+    if let view = recognizer.view {
+      view.transform = view.transform.rotated(by: recognizer.rotation)
+      recognizer.rotation = 0
+    }
   }
   
   @objc func handleTap(recognizer: UITapGestureRecognizer) {

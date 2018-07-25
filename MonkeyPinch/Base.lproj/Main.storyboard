@@ -51,10 +51,26 @@
                         <action selector="handlePanWithRecognizer:" destination="BYZ-38-t0r" id="YhP-L9-czQ"/>
                     </connections>
                 </panGestureRecognizer>
-                <pinchGestureRecognizer id="idb-ke-MWQ"/>
-                <pinchGestureRecognizer id="YUK-5n-Dyw"/>
-                <rotationGestureRecognizer id="At5-XT-G57"/>
-                <rotationGestureRecognizer id="1gX-Km-r6q"/>
+                <pinchGestureRecognizer id="idb-ke-MWQ">
+                    <connections>
+                        <action selector="handlePinchWithRecognizer:" destination="BYZ-38-t0r" id="Ub3-Vr-Egh"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <pinchGestureRecognizer id="YUK-5n-Dyw">
+                    <connections>
+                        <action selector="handlePinchWithRecognizer:" destination="BYZ-38-t0r" id="zy6-Ah-1fE"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <rotationGestureRecognizer id="At5-XT-G57">
+                    <connections>
+                        <action selector="handleRotateWithRecognizer:" destination="BYZ-38-t0r" id="LT7-Fk-dZ6"/>
+                    </connections>
+                </rotationGestureRecognizer>
+                <rotationGestureRecognizer id="1gX-Km-r6q">
+                    <connections>
+                        <action selector="handleRotateWithRecognizer:" destination="BYZ-38-t0r" id="Nbg-1x-XqN"/>
+                    </connections>
+                </rotationGestureRecognizer>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="6Dy-Dp-xbV">
                     <connections>
                         <action selector="handlePanWithRecognizer:" destination="BYZ-38-t0r" id="kjd-jl-Rdj"/>
