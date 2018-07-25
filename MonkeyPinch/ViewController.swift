@@ -32,6 +32,8 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
+  @IBOutlet var monkeyPan: UIPanGestureRecognizer!
+  @IBOutlet var bananaPan: UIPanGestureRecognizer!
   
   var chompPlayer: AVAudioPlayer? = nil
   
@@ -59,7 +61,8 @@ class ViewController: UIViewController {
       recognizer.delegate = self
       view.addGestureRecognizer(recognizer)
       
-      //TODO: Add a custom gesture recognizer too
+      recognizer.require(toFail: monkeyPan)
+      recognizer.require(toFail: bananaPan)
     }
     self.chompPlayer = self.loadSound(filename: "chomp")
   }
