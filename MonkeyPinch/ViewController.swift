@@ -29,12 +29,39 @@
  */
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
+  
+  var chompPlayer: AVAudioPlayer? = nil
+  
+  func loadSound(filename: String) -> AVAudioPlayer {
+    let url = Bundle.main.url(forResource: filename, withExtension: "caf")
+    var player = AVAudioPlayer()
+    do {
+      try player = AVAudioPlayer(contentsOf: url!)
+      player.prepareToPlay()
+    } catch {
+      print("Error loading \(url!): \(error.localizedDescription)")
+    }
+    return player
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    let filteredSubviews = self.view.subviews.filter({ $0 is UIImageView })
+    
+    for view in filteredSubviews  {
+      
+      let recognizer = UITapGestureRecognizer(target: self,
+                                              action:#selector(handleTap(recognizer:)))
+      recognizer.delegate = self
+      view.addGestureRecognizer(recognizer)
+      
+      //TODO: Add a custom gesture recognizer too
+    }
+    self.chompPlayer = self.loadSound(filename: "chomp")
   }
   
   @IBAction func handlePinch(recognizer : UIPinchGestureRecognizer) {
@@ -52,7 +79,7 @@ class ViewController: UIViewController {
   }
   
   @objc func handleTap(recognizer: UITapGestureRecognizer) {
-    
+    self.chompPlayer?.play()
   }
   
   @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
